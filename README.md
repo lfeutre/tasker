@@ -58,16 +58,16 @@ Copyright © 2023, Duncan McGreggor <oubiwann@gmail.com>.
 
 [//]: ---Named-Links---
 
-[logo]: priv/images/logo.jpg
-[logo-large]: priv/images/logo-large.jpg
-[github]: https://github.com/ORG/tasker
-[gitlab]: https://gitlab.com/ORG/tasker
-[gh-actions-badge]: https://github.com/ORG/tasker/workflows/build/badge.svg
-[gh-actions]: https://github.com/ORG/tasker/actions?query=workflow%3Abuild+
+[logo]: priv/images/logo.png
+[logo-large]: priv/images/logo-large.png
+[github]: https://github.com/lfeutre/tasker
+[gitlab]: https://gitlab.com/lfeutre/tasker
+[gh-actions-badge]: https://github.com/lfeutre/tasker/workflows/build/badge.svg
+[gh-actions]: https://github.com/lfeutre/tasker/actions?query=workflow%3Abuild+
 [lfe]: https://github.com/lfe/lfe
 [lfe badge]: https://img.shields.io/badge/lfe-2.1-blue.svg
 [erlang badge]: https://img.shields.io/badge/erlang-19%20to%2025-blue.svg
-[version]: https://github.com/ORG/tasker/blob/master/.github/workflows/cicd.yml
-[github tags]: https://github.com/ORG/tasker/tags
-[github tags badge]: https://img.shields.io/github/tag/ORG/tasker.svg
-[github downloads]: https://img.shields.io/github/downloads/ORG/tasker/total.svg
+[version]: https://github.com/lfeutre/tasker/blob/master/.github/workflows/cicd.yml
+[github tags]: https://github.com/lfeutre/tasker/tags
+[github tags badge]: https://img.shields.io/github/tag/lfeutre/tasker.svg
+[github downloads]: https://img.shields.io/github/downloads/lfeutre/tasker/total.svg
