@@ -20,9 +20,25 @@
 
 ## About [&#x219F;](#table-of-contents)
 
-Note that, due to the use of the safer `timer:apply_repeatedly`, this tool requires Erlang 26 or later.
+The `tasker` tool simly takes configuration that describes one or more OS CLI calls and executes them reguarly at the configured interval. Task metadata takes the following form:
+
+``` erlang
+[{name, String}, {cmd, String}, {args, [term] | []}, {interval, Integer}]
+```
+
+And a complete configiration takes the form:
+
+``` erlang
+[{tasker,
+  [{tasks, [metadata, ...]}]
+}].
+```
+
+See `./priv/examples` for working configs.
 
 ## Build [&#x219F;](#table-of-contents)
+
+Note that, due to the use of the safer `timer:apply_repeatedly`, this tool requires Erlang 26 or later.
 
 ```shell
 $ rebar3 lfe compile
