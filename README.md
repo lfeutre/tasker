@@ -58,6 +58,14 @@ erl -noshell -pa $(rebar3 path) \
   -run tasker start
 ```
 
+For convenience, a shell script has been added that allows one to run a config like so:
+
+``` shell
+./bin/tasker priv/examples/multiple.config
+```
+
+Note that this script backgrounds the `erl` OS process.
+
 ## License [&#x219F;](#table-of-contents)
 
 Apache License, Version 2.0
