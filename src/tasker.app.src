@@ -1,20 +1,30 @@
 {application, 'tasker', [
-    {description, "An LFE application"},
-    {vsn, "0.1.0"},
-    {registered, []},
-    {mod, {'tasker-app', [{tasks, [[{name, "Default Task (warning message output)"},
-                                    {cmd, "echo"},
-                                    {args, "You have run this app without a config file; did you mean to do that?"},
-                                    {interval, 500}]]
-                         }]}},
-    {applications, [
-        kernel,
-        stdlib,
-        erlexec
-    ]},
-    {env,[]},
-    {modules, [tasker,'tasker-app','tasker-sup']},
+  {description, "An LFE application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {'tasker-app', [{tasks, [[{name, "Default Task (warning message output)"},
+                                  {cmd, "echo"},
+                                  {args, "You have run this app without a config file; did you mean to do that?"},
+                                  {interval, 500}]]
+                       }]
+        }
+  },
+  {applications, [
+    kernel,
+    stdlib,
+    erlexec
+  ]},
+  {env,[]},
+  {modules, [tasker,'tasker-app','tasker-sup']},
 
-    {licenses, ["Apache 2.0"]},
-    {links, []}
+  {licenses, ["Apache 2.0"]},
+  {links, [
+    {"GitHub", "https://github.com/lfeutre/tasker"},
+    {"Hex", "https://hex.pm/packages/tasker"}
+  ]},
+  {exclude_files, [
+    "priv/html/*",
+    "priv/images/*",
+    "priv/.DS_Store"
+  ]}
  ]}.
