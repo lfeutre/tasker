@@ -7,7 +7,7 @@
 
 [![Project Logo][logo]][logo-large]
 
-*An LFE application*
+*An LFE application for running recurring tasks*
 
 ##### Table of Contents
 
@@ -50,10 +50,10 @@ Apache License, Version 2.0
 
 Copyright © 2023, Duncan McGreggor <oubiwann@gmail.com>.
 
-<!-- Named page links below: /-->
+[//]: ---Named-Links---
 
-[logo]: https://avatars1.githubusercontent.com/u/3434967?s=250
-[logo-large]: https://avatars1.githubusercontent.com/u/3434967
+[logo]: priv/images/logo.jpg
+[logo-large]: priv/images/logo-large.jpg
 [github]: https://github.com/ORG/tasker
 [gitlab]: https://gitlab.com/ORG/tasker
 [gh-actions-badge]: https://github.com/ORG/tasker/workflows/build/badge.svg
