@@ -1,6 +1,6 @@
 {application, 'tasker', [
     {description, "An LFE application"},
-    {vsn, git},
+    {vsn, "0.1.0"},
     {registered, []},
     {mod, {'tasker-app', [{tasks, [[{name, "Default Task (warning message output)"},
                                     {cmd, "echo"},
@@ -9,7 +9,8 @@
                          }]}},
     {applications, [
         kernel,
-        stdlib
+        stdlib,
+        erlexec
     ]},
     {env,[]},
     {modules, [tasker,'tasker-app','tasker-sup']},

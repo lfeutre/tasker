@@ -64,7 +64,11 @@ For convenience, a shell script has been added that allows one to run a config l
 ./bin/tasker priv/examples/multiple.config
 ```
 
-Note that this script backgrounds the `erl` OS process.
+An alternative that executes the call as a background OS process:
+
+``` shell
+./bin/taskerd priv/examples/multiple.config
+```
 
 ## License [&#x219F;](#table-of-contents)
 

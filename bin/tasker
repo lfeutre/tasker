@@ -5,4 +5,4 @@ CONFIG=$1
 erl -noshell \
   -pa $(rebar3 path) \
   -config $CONFIG \
-  -run tasker start &
+  -run tasker start

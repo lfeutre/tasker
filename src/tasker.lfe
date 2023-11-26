@@ -19,7 +19,8 @@
    (echo 1))
   ;; other
   (export
-   (start 0)))
+   (start 0)
+   (run 3)))
 
 (include-lib "logjam/include/logjam.hrl")
 
@@ -37,7 +38,7 @@
 ;;; -------------------------
 
 (defun start()
-  (application:start 'tasker))
+  (application:ensure_all_started 'tasker))
 
 (defun start_link (args)
   (let ((init (initial-state args)))
@@ -57,29 +58,35 @@
 (defun init (state)
   `#(ok ,state #(continue first-run)))
 
-(defun handle_cast (_msg state)
+(defun handle_cast (msg state)
+  (log-error "Unexpected cast message: ~p" (list msg))
   `#(noreply ,state))
 
 (defun handle_call
   (('stop _from state)
-    `#(stop shutdown ok ,state))
+   `#(stop shutdown ok ,state))
   ((`#(echo ,msg) _from state)
-    `#(reply ,msg ,state))
-  ((message _from state)
-    `#(reply ,(unknown-command) ,state)))
+   `#(reply ,msg ,state))
+  ((msg _from state)
+   (log-error "Unexpected call message: ~p" (list msg))
+   `#(reply ,(unknown-command) ,state)))
 
 (defun handle_continue
   (('first-run state)
-   (run-tasks (mref state 'tasks))
+   (run-tasks (self) (mref state 'tasks))
    `#(noreply ,state)))
 
 (defun handle_info
   ((`#(EXIT ,_from normal) state)
    `#(noreply ,state))
   ((`#(EXIT ,pid ,reason) state)
-   (io:format "Process ~p exited! (Reason: ~p)~n" `(,pid ,reason))
+   (log-warning "Process ~p exited! (Reason: ~p)~n" `(,pid ,reason))
    `#(noreply ,state))
-  ((_msg state)
+  ((`#(stdout ,_pid ,result) state)
+   (log-info (lists:droplast (binary_to_list result)))
+   `#(noreply ,state))
+  ((msg state)
+   (log-error "Unexpected info message: ~p" (list msg))
    `#(noreply ,state)))
 
 (defun terminate (_reason _state)
@@ -103,13 +110,24 @@
 ;;; -----------------
 
 (defun run-tasks
-  (('())
+  ((_ '())
    (log-debug "Finished task kick-off."))
-  ((`(,task . ,rest))
-   (let ((name (proplists:get_value 'name task))
-         (cmd (proplists:get_value 'cmd task))
-         (args (proplists:get_value 'args task))
-         (interval (proplists:get_value 'interval task)))
+  ((pid `(,task . ,rest))
+   (let* ((name (proplists:get_value 'name task))
+          (cmd (proplists:get_value 'cmd task))
+          (args (proplists:get_value 'args task))
+          (interval (proplists:get_value 'interval task))
+          (ms (* interval 1000))
+          (joined (string:join (lists:append (list cmd) (lists:append args (list "2>&1")))
+                               " ")))
      (log-info "Running task ~s (every ~p seconds)" (list name interval))
-     ;; XXX complete with calls to erlexec ...
-     (run-tasks rest))))
+     (timer:apply_repeatedly ms (MODULE) 'run (list pid name joined))
+     (run-tasks pid rest))))
+
+(defun run (pid name task)
+  (log-notice "Running task ~s" (list name))
+  (log-debug "Executing OS call: ~s" (list task))
+  ;;(exec:run_link task '()))
+  (exec:run task `(#(stderr ,pid) #(stdout ,pid) monitor)))
+  ;;(let ((output (exec:run task '(sync #(stderr stdout) stdout monitor))))
+  ;;  (gen_server:call (SERVER) output)))
