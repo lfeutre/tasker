@@ -1,33 +1,35 @@
-.DS_Store
-*.beam
-*.beam
-*.elc
-*.iml
-*.o
-*.plt
-*.sublime-project
-*.sublime-workspace
-*.swo
-*.swp
-*~
-.\#*
-.erlang.cookie
+# erlang
 .eunit
-.idea
-.rebar/*
-.rebar3
-/.emacs.desktop
-/.emacs.desktop.lock
-\#*\#
-_*
-_build/*
-auto-save-list
-bin
-deps
-ebin
+*.o
+*.beam
+*.plt
 erl_crash.dump
-log
-logs
-rebar/*
+.concrete/DEV_MODE
+
+# rebar 2.x
+.rebar
+rel/example_project
+ebin/*.beam
+deps
+
+# rebar 3
+.rebar3
 rebar3.crashdump
-tramp
+_build/
+_checkouts/
+rebar.lock
+
+# emacs
+*~
+\#*\#
+.\#*
+.emacs.desktop
+.emacs.desktop.lock
+
+# apple
+.DS_Store
+
+# misc
+/priv/images/drafts/*
+/doc/*
+/priv/output/*
