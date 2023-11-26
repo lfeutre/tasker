@@ -127,7 +127,4 @@
 (defun run (pid name task)
   (log-notice "Running task ~s" (list name))
   (log-debug "Executing OS call: ~s" (list task))
-  ;;(exec:run_link task '()))
   (exec:run task `(#(stderr ,pid) #(stdout ,pid) monitor)))
-  ;;(let ((output (exec:run task '(sync #(stderr stdout) stdout monitor))))
-  ;;  (gen_server:call (SERVER) output)))
