@@ -16,14 +16,18 @@
   (logjam:set-dev-config)
   (log-debug "Default args: ~p" (list args))
   (case (application:get_all_env)
-    ('() (.start. type args 'default))
-    (env (.start. type env 'override)))) 
-
-(defun .start. (type args _mode)
-  (let ((tasks (proplists:get_value 'tasks args)))
-    (log-info "Starting tasker application with tasks: ~p" (list tasks))
-    (tasker-sup:start_link tasks)))
+    ('() (start type args 'default))
+    (env (start type env 'override)))) 
 
 (defun stop (_state)
   (tasker-sup:stop)
   'ok)
+
+;;; -----------------
+;;; private functions
+;;; -----------------
+
+(defun start (type args mode)
+  (let ((tasks (proplists:get_value 'tasks args)))
+    (log-info "Starting tasker application (~p) with tasks: ~p" (list mode tasks))
+    (tasker-sup:start_link tasks)))

@@ -50,6 +50,14 @@ erl -noshell -pa $(rebar3 path) \
   -run tasker start
 ```
 
+Run the examle that shows how to run multiple recurring tasks:
+
+``` shell
+erl -noshell -pa $(rebar3 path) \
+  -config priv/examples/multiple.config \
+  -run tasker start
+```
+
 ## License [&#x219F;](#table-of-contents)
 
 Apache License, Version 2.0
