@@ -62,8 +62,8 @@ Copyright © 2023, Duncan McGreggor <oubiwann@gmail.com>.
 [logo-large]: priv/images/logo-large.png
 [github]: https://github.com/lfeutre/tasker
 [gitlab]: https://gitlab.com/lfeutre/tasker
-[gh-actions-badge]: https://github.com/lfeutre/tasker/workflows/cicd/badge.svg
-[gh-actions]: https://github.com/lfeutre/tasker/actions?query=workflow%3Acicd+
+[gh-actions-badge]: https://github.com/lfeutre/tasker/workflows/ci%2Fcd/badge.svg
+[gh-actions]: https://github.com/lfeutre/tasker/actions?query=workflow%3Acicd
 [lfe]: https://github.com/lfe/lfe
 [lfe badge]: https://img.shields.io/badge/lfe-2.1-blue.svg
 [erlang badge]: https://img.shields.io/badge/erlang-19%20to%2025-blue.svg
