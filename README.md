@@ -50,7 +50,7 @@ erl -noshell -pa $(rebar3 path) \
   -run tasker start
 ```
 
-Run the examle that shows how to run multiple recurring tasks:
+Run the example that configures multiple recurring tasks:
 
 ``` shell
 erl -noshell -pa $(rebar3 path) \
