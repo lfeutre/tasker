@@ -20,7 +20,7 @@
 
 ## About [&#x219F;](#table-of-contents)
 
-TBD
+Note that, due to the use of the safer `timer:apply_repeatedly`, this tool requires Erlang 26 or later.
 
 ## Build [&#x219F;](#table-of-contents)
 
@@ -86,7 +86,7 @@ Copyright © 2023, Duncan McGreggor <oubiwann@gmail.com>.
 [gh-actions]: https://github.com/lfeutre/tasker/actions?query=workflow%3Acicd
 [lfe]: https://github.com/lfe/lfe
 [lfe badge]: https://img.shields.io/badge/lfe-2.1-blue.svg
-[erlang badge]: https://img.shields.io/badge/erlang-19%20to%2025-blue.svg
+[erlang badge]: https://img.shields.io/badge/erlang-26+-blue.svg
 [version]: https://github.com/lfeutre/tasker/blob/master/.github/workflows/cicd.yml
 [github tags]: https://github.com/lfeutre/tasker/tags
 [github tags badge]: https://img.shields.io/github/tag/lfeutre/tasker.svg
