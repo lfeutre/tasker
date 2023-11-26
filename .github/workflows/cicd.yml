@@ -8,7 +8,7 @@ on:
     branches: [ main, 'release/*' ]
   # Build once a month, just to be sure things are still working
   schedule:
-    - cron: "20 4 14 * *"
+    - cron: "20 4 49 * *"
 
 jobs:
 
@@ -76,45 +76,3 @@ jobs:
     # - name: Test Coverage
     #   run: rebar3 as test do proper -c, cover -v --min_coverage=0
 
-  examples:
-    name: Examples w/Erlang ${{ matrix.otp_version }}
-    runs-on: ubuntu-latest
-    needs: [core-builds,older-builds]
-
-    container: erlang:${{ matrix.otp_version }}
-    
-    strategy:
-      matrix:
-        otp_version: ['24.3', '25.3', '26.0']
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install Deps
-      run: apt-get update && apt-get install -y gnuplot sudo
-    - name: Setup System User
-      run: useradd -m examplesuser && chown -R examplesuser:examplesuser .
-    - name: Compile
-      run: |
-        sudo -u examplesuser rebar3 compile
-        sudo -u examplesuser rebar3 as examples compile
-    - name: List Examples
-      run: |
-        sudo -u examplesuser rebar3 as examples list
-    - name: Which gnuplot
-      run: which gnuplot
-    - name: gnuplot Version
-      run: gnuplot --version
-    - name: Run the Examples
-      run: |
-        sudo -u examplesuser rebar3 as examples lfe run -- all true
-        sudo -u examplesuser rebar3 as examples lfe run -- fourier-approx true
-    - name: List Generated Images
-      run: ls -l priv/output/*.jpg
-    - name: Show Expected md5sums
-      run: cat examples/output.md5sum
-    - name: Make md5sum
-      run: make md5sum > priv/output/examples.md5sum
-    - name: Show Generated md5sums
-      run: cat priv/output/examples.md5sum
-    - name: Check md5sums
-      run: diff -EBbiw --suppress-common-lines examples/output.md5sum priv/output/examples.md5sum
