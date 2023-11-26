@@ -2,13 +2,17 @@
     {description, "An LFE application"},
     {vsn, git},
     {registered, []},
-    {mod, {'tasker-app', []}},
+    {mod, {'tasker-app', [{tasks, [[{name, "Default Task (warning message output)"},
+                                    {cmd, "echo"},
+                                    {args, "You have run this app without a config file; did you mean to do that?"},
+                                    {interval, 500}]]
+                         }]}},
     {applications, [
         kernel,
         stdlib
     ]},
     {env,[]},
-    {modules, []},
+    {modules, [tasker,'tasker-app','tasker-sup']},
 
     {licenses, ["Apache 2.0"]},
     {links, []}

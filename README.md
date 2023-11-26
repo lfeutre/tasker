@@ -42,7 +42,13 @@ $ rebar3 as test lfe test
 
 ## Usage [&#x219F;](#table-of-contents)
 
-TBD
+Run the date example, calling out to the shell every 5 seconds to get the system date:
+
+``` shell
+erl -noshell -pa $(rebar3 path) \
+  -config priv/examples/shell-date.config \
+  -run tasker start
+```
 
 ## License [&#x219F;](#table-of-contents)
 
