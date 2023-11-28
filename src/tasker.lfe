@@ -118,8 +118,7 @@
           (args (proplists:get_value 'args task))
           (interval (proplists:get_value 'interval task))
           (ms (* interval 1000))
-          (joined (string:join (lists:append (list cmd) (lists:append args (list "2>&1")))
-                               " ")))
+          (joined (shell-cmd cmd args "2>&1"))
      (log-info "Running task ~s (every ~p seconds)" (list name interval))
      (timer:apply_repeatedly ms (MODULE) 'run (list pid name joined))
      (run-tasks pid rest))))
@@ -128,3 +127,8 @@
   (log-notice "Running task ~s" (list name))
   (log-debug "Executing OS call: ~s" (list task))
   (exec:run task `(#(stderr ,pid) #(stdout ,pid) monitor)))
+
+(defun shell-cmd (cmd args tail)
+  (string:join (lists:append (list cmd)
+                             (lists:append args (list tail)))
+               " "))
