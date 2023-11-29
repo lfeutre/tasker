@@ -16,7 +16,7 @@
 
 (defun SERVER () (MODULE))
 (defun sup-flags ()
-  `#M(strategy one_for_one
+  `#m(strategy one_for_one
       intensity 3
       period 60))
 
