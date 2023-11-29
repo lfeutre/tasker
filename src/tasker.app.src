@@ -1,6 +1,6 @@
 {application, 'tasker', [
   {description, "An LFE application for running recurring tasks"},
-  {vsn, "0.1.0"},
+  {vsn, "0.2.0"},
   {registered, []},
   {mod, {'tasker-app', [{tasks, [[{name, "Default Task (warning message output)"},
                                   {cmd, "echo"},
