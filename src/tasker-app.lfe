@@ -38,8 +38,9 @@
     (log-info "Starting tasker application (~p) with tasks: ~p" (list mode tasks))
     (tasker-sup:start_link tasks)))
 
-(defun default-cfg-file ()
-  (dirs:config '(tasker config.toml)))
+;; WIP
+;;(defun default-cfg-file ()
+;;  (dirs:config '(tasker config.toml)))
 
 (defun cli-args ()
   (let ((supported '(toml config))
@@ -53,14 +54,17 @@
     ('undefined 'false)
     (_ 'true)))
 
-(defun config-file? ()
-  (filelib:is_regular (default-cfg-file)))
+;; WIP
+;;(defun config-file? ()
+;;  (filelib:is_regular (default-cfg-file)))
 
-(defun read-config (filename)
-  (read-config filename '()))
+;; WIP
+;;(defun read-config (filename)
+;;  (read-config filename '()))
 
-(defun read-config (filename args)
-  ())
+;; WIP
+;;(defun read-config (filename args)
+;;  ())
 
 (defun read-erl-config (filename)
   (let ((`#(ok (,data)) (file:consult filename)))
@@ -74,17 +78,18 @@
       (list-comp ((<- `#(,k ,v) (maps:to_list x)))
         `#(,(binary_to_list k) ,v)))))
 
-(defun get-config (cli-args app-args)
-  "Order of precedence is:
-   * if a CLI -config flag is used to set a value, use that one
-   * if not, check for the default location of the config file
-   * failing that, use the default defined in the app.src"
-  (if (passed-config? cli-args)
-    (let ((file (proplists:get_value 'config cli-args)))
-      (log-debug "Config file '~s' was explicitly passed; using it ..." (list file))
-      (read-config file))
-    (if (config-file?)
-      (let ((file (default-cfg-file)))
-        (log-debug "No config file passed, using default '~s' file ..." (list file))
-        (read-config file cli-args))
-      app-args)))
+;; WIP
+;;(defun get-config (cli-args app-args)
+;;  "Order of precedence is:
+;;   * if a CLI -config flag is used to set a value, use that one
+;;   * if not, check for the default location of the config file
+;;   * failing that, use the default defined in the app.src"
+;;  (if (passed-config? cli-args)
+;;    (let ((file (proplists:get_value 'config cli-args)))
+;;      (log-debug "Config file '~s' was explicitly passed; using it ..." (list file))
+;;      (read-config file))
+;;    (if (config-file?)
+;;      (let ((file (default-cfg-file)))
+;;        (log-debug "No config file passed, using default '~s' file ..." (list file))
+;;        (read-config file cli-args))
+;;      app-args)))
