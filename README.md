@@ -62,7 +62,7 @@ $ rebar3 as test lfe test
 
 ## Usage [&#x219F;](#table-of-contents)
 
-Run the date example, calling out to the shell every 5 seconds to get the system date:
+Run the date example, calling out to the system shell every 5 seconds to get the system date:
 
 ``` shell
 erl -noshell -pa $(rebar3 path) \
