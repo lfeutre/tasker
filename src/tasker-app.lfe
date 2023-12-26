@@ -87,5 +87,4 @@
       (let ((file (default-cfg-file)))
         (log-debug "No config file passed, using default '~s' file ..." (list file))
         (read-config file cli-args))
-      ;; XXX
-      'tbd)))
+      app-args)))
